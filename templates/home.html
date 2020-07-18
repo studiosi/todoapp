@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    ToDo Lists - Home
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1>Lists</h1>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            {% if lists %}
+                <ul>
+                {% for list in lists %}
+                    <li>
+                        <a href="{{ url_for('show_list', list_id=list.id) }}">{{ list.name }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>There are no lists.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col">
+            <a class="btn btn-primary btn-lg btn-block" href="{{ url_for('show_create_list') }}">Create new list</a>
+        </div>
+    </div>
+{% endblock %}

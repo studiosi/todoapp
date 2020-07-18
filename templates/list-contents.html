@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    ToDo Lists - List {{ todo_list.id }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1>{{ todo_list.name }}</h1>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            {% if filtered_items %}
+                <ul data-list-id="{{ todo_list.id }}" id="list-items">
+                {% for item in filtered_items %}
+                    <li data-item-id="{{ item.id }}">
+                        {{ item.content }}
+                        <a class="btn btn-primary btn-delete" href="{{ url_for('remove_list_element', list_id=list_id, item_id=item.id) }}">&#10005;</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>This list contains no items</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <h2>Add item</h2>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div id="error-container" class="row mt-5">
+        {% for message in messages %}
+        <div class="col-12">
+            <p class="error-message">{{ message }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col">
+            <form method="post" action="{{ url_for('add_list_element', list_id=list_id) }}" novalidate>
+                {{ create_item_form.hidden_tag() }}
+                <div class="row mt-5">
+                    <div class="col-4 col-md-2 text-right">
+                        {{ create_item_form.content.label }}
+                    </div>
+                    <div class="col-8 col-md-10">
+                        {{ create_item_form.content() }}
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        {{ create_item_form.submit }}
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="row mt-2 mb-5">
+        <div class="col">
+            <a class="btn btn-primary btn-lg btn-block"href="{{ url_for('home') }}">Back</a>
+        </div>
+    </div>
+
+{% endblock %}

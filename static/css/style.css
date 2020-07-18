@@ -1,0 +1,109 @@
+/* FONTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* GENERAL */
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    background-color: #211a1d;
+}
+
+h1,
+h2 {
+    color: #6320ee;
+    font-weight: 700;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    color: #8075ff;
+    font-size: 1.4rem;
+    padding-bottom: 10px;
+}
+
+li:last-child {
+    padding-bottom: 0px;
+}
+
+li:before {
+    content: "\00BB";
+    color: #cad5ca;
+    padding-right: 10px;
+    font-size: 1.8rem;
+    display: inline-block;
+}
+
+a {
+    text-decoration: underline;
+    color: #8075ff;
+    font-size: 1.4rem;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #6320ee;
+    outline: none;
+}
+
+p {
+    color: #8075ff;
+    font-size: 1.4rem;
+}
+
+p.error-message:before{
+    content: "\26A0";
+    color: #cad5ca;
+    padding-right: 10px;
+    font-size: 1.8rem;
+    display: inline-block;
+}
+
+/* BUTTONS */
+
+.btn-primary {
+    text-decoration: none;
+    background-color: #8075ff;
+    color: #f8f0fb;
+    border: none;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: #6320ee !important;
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+    box-shadow: 0 0 0 0.2rem rgba(99, 32, 238, .5) !important;
+}
+
+.btn-delete {
+    margin-left: 10px;
+}
+
+/* FORMS */
+
+label {
+    color: #6320ee;
+    font-size: 1.25rem;
+}
+
+input {
+    width: 100%;
+    background-color: #8075ff;
+    border: 2px solid #f8f0fb;
+    color: #f8f0fb;
+}
+
+input:focus {
+    outline: none;
+}
